@@ -1,0 +1,1 @@
+Simple Spring Kafka consumer and producer. All topics in application.yaml

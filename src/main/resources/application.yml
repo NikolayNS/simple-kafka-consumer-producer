@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: simple-kafka-consumer-producer
+  kafka:
+    retry:
+      interval: 1000
+      max-attempts: 0
+    properties:
+      bootstrap-servers: localhost:9092
+      request.timeout.ms: 20000
+      retry.backoff.ms: 500
+    topics:
+      api-example-request-v1:
+        name: api-example-request-v1
+        group-id: api-example-request-v1_group_id
+      api-example-response-v1:
+        name: api-example-response-v1
+
+kafka:
+  ssl:
+    enabled: false
+    protocol: SSL
+    key-store-location: changeit
+    key-store-password: changeit
+    key-password: changeit
+    trust-store-location: changeit
+    trust-store-password: changeit
+
+logging:
+  pattern:
+    console: "%clr(%-5level) %d{yyy-MM-dd HH:mm:ss.SS} [%thread] %clr([%logger{0}.%M]){cyan} messageKey:[%X{messageKey}] %m%wEx%n"
+    file: "[%-5level] %d{yyy-MM-dd HH:mm:ss.SS} [%thread] [%-26logger{26}] messageKey:%X{messageKey} %m%wEx%n"
